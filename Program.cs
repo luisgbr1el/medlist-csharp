@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using MedTest.Entities;
 using System.Collections.Generic;
 using System.IO;
@@ -72,14 +72,20 @@ namespace MedTest {
                     using (StreamWriter sw = new StreamWriter(fullName)) {
                         sw.WriteLine("<head>");
                         sw.WriteLine($" <title>summaryDoctors_{datetime.ToString("ddMMyyyy_HHmmss")}</title>");
+                        sw.WriteLine("  <style type='text/css' media='print'>h1, body, table, div#head { color: black;}table, th, td { border: 1px solid black !important;} button { display: none !important;}</style>");
                         sw.WriteLine("  <style>");
                         sw.WriteLine("      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');");
-                        sw.WriteLine("      body { font-family: 'Poppins', sans-serif; font-size: 16pt; color: black; }");
-                        sw.WriteLine("      table, th, td { border: 1px solid black; border-collapse: collapse; padding: 7px; }");
+                        sw.WriteLine("      body { font-family: 'Poppins', sans-serif; font-size: 16pt; color: rgb(214, 214, 214); margin: 0; background-color: rgb(31, 31, 31);}");
+                        sw.WriteLine("      table, th, td { border: 1px solid rgb(214, 214, 214); border-collapse: collapse; padding: 7px; }");
+                        sw.WriteLine("      div#head { margin: 0; padding: 1px; background-color: rgb(41, 41, 41); margin-bottom: 30px; color: rgb(214, 214, 214);}");    
+                        sw.WriteLine("      button { font-weight: bolder; transition: 0.1s; padding: 10px; border-radius: 5px; background-color: rgb(41, 41, 41); color: rgb(214, 214, 214); border: none; font-size: 10pt; font-family: 'Poppins', sans-serif; cursor: pointer;}");    
+                        sw.WriteLine("      button:hover { background-color: rgb(36, 35, 35); transition: 0.1s;}");    
                         sw.WriteLine("  </style>");
                         sw.WriteLine("</head>");
                         sw.WriteLine("<center>");
-                        sw.WriteLine("  <h1>Doctors</h1>");
+                        sw.WriteLine("  <div id='head'>");
+                        sw.WriteLine("      <h1 style='font-size: 18pt; '>Summary doctors</h1>");
+                        sw.WriteLine("  </div>");
                         sw.WriteLine("  <table>");
                         sw.WriteLine("      <tr>");
                         sw.WriteLine("          <th>NAME</th>");
